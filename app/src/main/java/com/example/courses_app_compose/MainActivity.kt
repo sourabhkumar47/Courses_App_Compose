@@ -41,11 +41,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Composable
 fun TopicCard(
     topic: Topic,
     modifier: Modifier = Modifier
@@ -58,34 +53,40 @@ fun TopicCard(
             Box {
                 Image(
                     painter = painterResource(topic.imageRes),
-                    contentDescription = stringResource(topic.name),
+                    contentDescription = null,
                     modifier = Modifier
                         .size(height = 68.dp, width = 68.dp)
-                        .height(194.dp),
+                        .aspectRatio(1f),
                     contentScale = ContentScale.Crop
                 )
             }
 
             Column {
                 Text(
-                    text = stringResource(topic.name),
+                    text = stringResource(id = topic.name),
                     modifier = Modifier
                         .padding(
                             start = 16.dp,
-                            end = 16.dp,
                             top = 16.dp,
+                            end = 16.dp,
                             bottom = 8.dp
                         ),
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.body2
                 )
 
-                Row {
-                    Icon(painter = painterResource(R.drawable.ic_grain), contentDescription = null)
-
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_grain),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(start = 16.dp)
+                    )
                     Text(
                         text = stringResource(topic.availableCourse),
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.h6
+                        modifier = Modifier.padding(start = 8.dp),
+                        style = MaterialTheme.typography.caption
                     )
                 }
             }
@@ -108,9 +109,9 @@ fun TopicGrid(modifier: Modifier = Modifier) {
 
 @Preview
 @Composable
-fun TopicPreview(){
+fun TopicPreview() {
     Courses_App_ComposeTheme {
-        val topic = Topic(R.string.crafts,313,R.drawable.ic_grain)
+        val topic = Topic(R.string.crafts, 313, R.drawable.ic_grain)
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
@@ -118,6 +119,5 @@ fun TopicPreview(){
         ) {
             TopicCard(topic = topic)
         }
-
     }
 }
