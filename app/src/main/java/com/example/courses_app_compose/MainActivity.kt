@@ -50,11 +50,12 @@ fun TopicCard(
         shape = RoundedCornerShape(10)
     ) {
         Row {
-            Box{
+            Box {
                 Image(
                     painter = painterResource(topic.imageRes),
                     contentDescription = stringResource(topic.name),
                     modifier = Modifier
+                        .size(height = 68.dp, width = 68.dp)
                         .height(194.dp),
                     contentScale = ContentScale.Crop
                 )
@@ -63,12 +64,18 @@ fun TopicCard(
             Column {
                 Text(
                     text = stringResource(topic.name),
-                    modifier = Modifier.padding(16.dp),
+                    modifier = Modifier
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            top = 16.dp,
+                            bottom = 8.dp
+                        ),
                     style = MaterialTheme.typography.h6
                 )
 
                 Row {
-                    Icon(painter = painterResource(R.drawable.ic_grain), contentDescription = null )
+                    Icon(painter = painterResource(R.drawable.ic_grain), contentDescription = null)
 
                     Text(
                         text = stringResource(topic.availableCourse),
