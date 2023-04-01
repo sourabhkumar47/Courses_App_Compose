@@ -30,8 +30,7 @@ class MainActivity : ComponentActivity() {
             Courses_App_ComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                 ) {
                     TopicGrid()
                 }
@@ -42,12 +41,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TopicCard(
-    topic: Topic,
-    modifier: Modifier = Modifier
+    topic: Topic, modifier: Modifier = Modifier
 ) {
     Card(
-        elevation = 4.dp,
-        shape = RoundedCornerShape(10)
+        elevation = 4.dp, shape = RoundedCornerShape(10)
     ) {
         Row {
             Box {
@@ -63,15 +60,9 @@ fun TopicCard(
 
             Column {
                 Text(
-                    text = stringResource(id = topic.name),
-                    modifier = Modifier
-                        .padding(
-                            start = 16.dp,
-                            top = 16.dp,
-                            end = 16.dp,
-                            bottom = 8.dp
-                        ),
-                    style = MaterialTheme.typography.body2
+                    text = stringResource(id = topic.name), modifier = Modifier.padding(
+                        start = 16.dp, top = 16.dp, end = 16.dp, bottom = 8.dp
+                    ), style = MaterialTheme.typography.body2
                 )
 
                 Row(
@@ -80,11 +71,10 @@ fun TopicCard(
                     Icon(
                         painter = painterResource(R.drawable.ic_grain),
                         contentDescription = null,
-                        modifier = Modifier
-                            .padding(start = 16.dp)
+                        modifier = Modifier.padding(start = 16.dp)
                     )
                     Text(
-                        text = stringResource(topic.availableCourse),
+                        text = topic.availableCourse.toString(),
                         modifier = Modifier.padding(start = 8.dp),
                         style = MaterialTheme.typography.caption
                     )
@@ -99,7 +89,8 @@ fun TopicGrid(modifier: Modifier = Modifier) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.padding(8.dp)
     ) {
         items(DataSource.topics) { topic ->
             TopicCard(topic)
@@ -111,7 +102,7 @@ fun TopicGrid(modifier: Modifier = Modifier) {
 @Composable
 fun TopicPreview() {
     Courses_App_ComposeTheme {
-        val topic = Topic(R.string.crafts, 313, R.drawable.ic_grain)
+        val topic = Topic(R.string.photography, 321, R.drawable.photography)
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
