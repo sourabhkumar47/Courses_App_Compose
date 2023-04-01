@@ -52,7 +52,7 @@ fun TopicCard(
                     painter = painterResource(topic.imageRes),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(height = 68.dp, width = 68.dp)
+                        .size(height = 95.dp, width = 95.dp)
                         .aspectRatio(1f),
                     contentScale = ContentScale.Crop
                 )
@@ -60,9 +60,15 @@ fun TopicCard(
 
             Column {
                 Text(
-                    text = stringResource(id = topic.name), modifier = Modifier.padding(
-                        start = 16.dp, top = 16.dp, end = 16.dp, bottom = 8.dp
-                    ), style = MaterialTheme.typography.body2
+                    text = stringResource(id = topic.name),
+                    modifier = Modifier.
+                    padding(
+                        start = 16.dp,
+                        top = 16.dp,
+                        end = 16.dp,
+                        bottom = 8.dp
+                    ),
+                    style = MaterialTheme.typography.body2
                 )
 
                 Row(
